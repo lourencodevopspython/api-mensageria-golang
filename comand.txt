@@ -1,0 +1,11 @@
+#inciar repo
+go mod init <base_path>
+
+#intalar dependencias
+go mod tidy
+
+docker-compose exec goapp bash
+kafka-topics --bootstrap-server=localhost:9092 --topic=products --create
+kafka-console-producer --bootstrap-server=localhost:9092 --topic=products 
+
+go run cmd/app/main.go
